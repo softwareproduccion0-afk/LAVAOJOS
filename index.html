@@ -300,7 +300,7 @@
                         <i class="fa-solid fa-camera-retro me-2"></i>Estado, Evidencias y Firma
                     </h4>
 
-                    <div class="mb-3">SS
+                    <div class="mb-3">
                         <label class="form-label fw-bold">Estado / Estado Final *</label>
                         <select id="eye-status" class="form-select fw-bold text-dark" required>
                             <option value="OK" class="text-success fw-bold">🟢 CONFORME / CUMPLE (OK)</option>
@@ -494,8 +494,8 @@
                         lastInspection: "",
                         inspector: "",
                         checklist: checklistItems.reduce((acc, curr) => {
-                            acc[curr] = { result: 'Cumple', obs: 'OK' };
-                            return acc;
+                           acc[curr] = { result: 'Cumple', obs: '' };
+                           return acc;
                         }, {}),
                         photos: [],
                         signature: null
@@ -958,7 +958,7 @@
                     const row = sheet.getRow(rowIndex);
 
                     const obsResumen = Object.entries(item.checklist || {})
-                        .filter(([, v]) => v && v.obs && v.obs.trim() !== '' && v.obs.trim().toUpperCase() !== 'OK')
+                        .filter(([, v]) => v && v.obs && v.obs.trim() !== '' && v.obs.trim().toUpperCase() !== '')
                         .map(([k, v]) => `${k}: ${v.obs.trim()}`)
                         .join(' | ');
 
